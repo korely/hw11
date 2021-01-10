@@ -7,6 +7,7 @@ import java.util.Arrays;
 public class HumanList {
 
     private Human[] humans = new Human[0];
+    private Human[] humansForDel = new Human[0];
 
     public void add(Human h) {
         humans = Arrays.copyOf(humans, humans.length + 1);
@@ -24,4 +25,6 @@ public class HumanList {
     public int size() {
         return humans.length;
     }
+
+
 }

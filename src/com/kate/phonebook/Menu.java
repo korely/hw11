@@ -2,8 +2,6 @@ package com.kate.phonebook;
 
 import com.kate.entities.Human;
 import com.kate.services.HumanService;
-import com.kate.utils.HumanList;
-
 import java.util.Scanner;
 
 public class Menu {
@@ -11,7 +9,6 @@ public class Menu {
     public void showMenu() {
 
         HumanService hs = new HumanService();
-        HumanList humans = new HumanList();
         Scanner sc = new Scanner(System.in);
 
         System.out.println("Phone Book");
