@@ -17,14 +17,6 @@ public class HumanList {
         return humans[index];
     }
 
-    public int getIndex() {
-        int index = 0;
-        for (int i = 0; i < humans.length; i++) {
-            index = i;
-        }
-        return index;
-    }
-
     public void set(int index, Human value) {
         humans[index] = value;
     }

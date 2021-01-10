@@ -56,10 +56,6 @@ public class Human {
 
     @Override
     public String toString() {
-        return "Human{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", patronymic='" + patronymic + '\'' +
-                '}';
+        return name + ' ' + surname + ' ' + patronymic;
     }
 }
