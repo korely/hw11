@@ -4,12 +4,12 @@ import java.util.Objects;
 
 public class Human {
     private String name;
-    private String surname;
+    private String lastname;
     private String patronymic;
 
-    public Human(String name, String surname, String patronymic) {
+    public Human(String name, String lastname, String patronymic) {
         this.name = name;
-        this.surname = surname;
+        this.lastname = lastname;
         this.patronymic = patronymic;
     }
 
@@ -25,12 +25,12 @@ public class Human {
         this.name = name;
     }
 
-    public String getSurname() {
-        return surname;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setSurname(String surname) {
-        this.surname = surname;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getPatronymic() {
@@ -46,16 +46,16 @@ public class Human {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Human human = (Human) o;
-        return Objects.equals(name, human.name) && Objects.equals(surname, human.surname) && Objects.equals(patronymic, human.patronymic);
+        return Objects.equals(name, human.name) && Objects.equals(lastname, human.lastname) && Objects.equals(patronymic, human.patronymic);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, patronymic);
+        return Objects.hash(name, lastname, patronymic);
     }
 
     @Override
     public String toString() {
-        return name + ' ' + surname + ' ' + patronymic;
+        return name + ' ' + lastname + ' ' + patronymic;
     }
 }

@@ -27,7 +27,6 @@ public class HumanService {
 
     }
 
-
     public void showHumans() {
         System.out.println("-----------------------------------------------------");
         System.out.println("\nList of humans:\n");
@@ -36,7 +35,6 @@ public class HumanService {
             System.out.println((i + 1) + ". " + humans.get(i));
         }
     }
-
 
     public void delHumanByNumber(int x) {
 
@@ -64,7 +62,43 @@ public class HumanService {
 
     }
 
+    public void findByLastname(String s) {
+        Human h;
+        int found = 0;
+
+        for (int i = 0; i < humans.size(); i++) {
+            h = humans.get(i);
+            if (h.getLastname().equals(s)) {
+                System.out.println("\nLastname [" + s + "] was found\n" +
+                        "Human: " + (i + 1) + ". " + humans.get(i));
+                found++;
+            }
+        }
+        if (found == 0) {
+            System.out.println("Nothing was found");
+        }
+
+    }
+
+    public void findByName(String s) {
+        Human h;
+        int found = 0;
+
+        for (int i = 0; i < humans.size(); i++) {
+            h = humans.get(i);
+            if (h.getName().equals(s)) {
+                System.out.println("\nName [" + s + "] was found\n" +
+                        "Human: " + (i + 1) + ". " + humans.get(i));
+                found++;
+            }
+        }
+        if (found == 0) {
+            System.out.println("Nothing was found");
+        }
+    }
+
 }
+
 
 
 

@@ -2,6 +2,7 @@ package com.kate.phonebook;
 
 import com.kate.entities.Human;
 import com.kate.services.HumanService;
+
 import java.util.Scanner;
 
 public class Menu {
@@ -13,7 +14,7 @@ public class Menu {
 
         System.out.println("Phone Book");
         System.out.println("\n[add] - add human\n[show] - show humans list\n" +
-                "[delete] - delete human\n[find l] - find by last name\n[find n] find by name\n[end] exit from menu\n");
+                "[delete] - delete human\n[findL] - find by last name\n[findN] find by name\n[end] exit from menu\n");
 
         while (true) {
             System.out.println("-----------------Please do a choice-----------------");
@@ -30,17 +31,31 @@ public class Menu {
                 Human h = new Human(name, lname, patr);
                 hs.addHuman(h);
             }
-            if (choice.equals("show")) {
+            else if (choice.equals("show")) {
                 hs.showHumans();
             }
-            if (choice.equals("delete")) {
+            else if (choice.equals("delete")) {
                 System.out.println("Please enter number of human");
                 int hNum = sc.nextInt();
                 hs.delHumanByNumber(hNum);
             }
-            if (choice.equals("end")) {
+            else if (choice.equals("findL")) {
+                System.out.println("Please enter last name of human to find");
+                String findLastName = sc.next();
+                hs.findByLastname(findLastName);
+            }
+            else if (choice.equals("findN")) {
+                System.out.println("Please enter name of human to find");
+                String findName = sc.next();
+                hs.findByName(findName);
+            }
+            else if (choice.equals("end")) {
                 System.out.println("Bye!");
                 break;
+            }
+
+            else{
+                System.out.println("Something entered wrong...\nPlease repeat your request.\n");
             }
 
         }
