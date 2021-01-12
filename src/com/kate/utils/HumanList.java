@@ -40,28 +40,4 @@ public class HumanList {
         return same;
     }
 
-
-    public void deleteByIndex(int x) {
-
-        HumanList humansTemp = new HumanList();
-        for (int i = 0; i < humans.length; i++) {
-            if (i == x - 1) {
-                System.out.println("The human [" + humans[x - 1] + "] was deleted");
-                if (humans[i] == humansTemp.get(humansTemp.size() - 1)) {
-                    humansTemp.add(humans[i]);
-                    humans[x - 1] = null;
-                } else {
-                    humansTemp.set(i, humans[i]);
-                }
-            }
-
-            for (int k = 0; k < humansTemp.size(); k++) {
-                humansTemp.add(humans[i]);
-
-            }
-
-        }
-
-
-    }
 }

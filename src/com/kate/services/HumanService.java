@@ -13,8 +13,30 @@ public class HumanService {
 
     public void delHumanByNumber(int x) {
 
-        humans.deleteByIndex(x);
+        HumanList humansTemp = new HumanList();
+        for (int i = 0; i < humans.size(); i++) {
+            if (i == x - 1) {
+                System.out.println("The human [" + humans.get(x - 1) + "] was deleted");
+                humans.set(x - 1, null);
+            } else {
+                humans.set(i, humans.get(i));
+            }
+        }
+
+        for (int i = 0; i < humans.size(); i++) {
+            if (humans.get(i) != null) {
+                humansTemp.add(humans.get(i));
+            }
+        }
+
+        humans = new HumanList();
+
+        for (int i = 0; i < humansTemp.size(); i++) {
+            humans.add(humansTemp.get(i));
+        }
+
     }
+
 
     public void findByLastname(String s) {
         Human h;
@@ -52,6 +74,8 @@ public class HumanService {
     }
 
 }
+
+
 
 
 
