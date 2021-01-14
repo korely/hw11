@@ -1,37 +1,35 @@
 package com.kate;
+
+import com.kate.services.HumanService;
 import com.kate.ui.HumanUI;
 
-public class HumansController {
+public class HumanController {
 
-    private HumanUI ui;
+    HumanUI ui;
+    HumanService hs;
 
-    public HumansController(HumanUI ui) {
+    public HumanController(HumanUI ui, HumanService hs) {
         this.ui = ui;
+        this.hs = hs;
     }
 
     public void addHuman() {
         ui.readHuman();
-        ui.addUniqueHuman();
     }
 
     public void showHumans() {
-        ui.showHumans();
+        ui.showHumansHead();
+        hs.showMeHumans();
     }
 
-    public void deleteHuman() {
+    public void deleteHuman(){
         ui.showDeleteInput();
     }
-
-    public void findLastName(){
+    public void findLastname(){
         ui.showFindLInput();
     }
-
     public void findName(){
         ui.showFindNInput();
-    }
-
-    public void end(){
-        ui.showEnd();
     }
 
 }

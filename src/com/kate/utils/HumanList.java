@@ -25,9 +25,6 @@ public class HumanList {
         return humans.length;
     }
 
-    public void setSize(int x, Human h) {
-        humans = Arrays.copyOf(humans, humans.length + x);
-    }
 
     public int findTheSame(Human h) {
         int same = 0;
@@ -39,5 +36,12 @@ public class HumanList {
         }
         return same;
     }
+
+    public void show(){
+        for (int i = 0; i < humans.length; i++) {
+            System.out.println(humans[i]);
+        }
+    }
+
 
 }
