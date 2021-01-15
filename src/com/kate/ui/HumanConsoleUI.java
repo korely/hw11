@@ -1,18 +1,15 @@
 package com.kate.ui;
 
-import com.kate.services.HumanConsoleService;
-import com.kate.services.HumanService;
-
+import com.kate.entities.Human;
 import java.util.Scanner;
 
 public class HumanConsoleUI implements HumanUI {
 
     Scanner sc = new Scanner(System.in);
-    HumanService hc = new HumanConsoleService();
 
     @Override
-    public void readHuman() {
-
+    public Human readHuman(Scanner sc) {
+        Human h;
         System.out.println("Please enter humans name: ");
         System.out.println("Name: ");
         String name = sc.next();
@@ -23,7 +20,8 @@ public class HumanConsoleUI implements HumanUI {
         System.out.println("Patronymic: ");
         String patr = sc.next();
         sc.nextLine();
-        hc.addMeHumans(name, lName, patr);
+        h = new Human(name, lName, patr);
+        return h;
     }
 
     @Override
@@ -32,24 +30,27 @@ public class HumanConsoleUI implements HumanUI {
     }
 
     @Override
-    public void showDeleteInput() {
+    public int showDeleteInput() {
+        int x;
         System.out.println("Please enter number of human");
-        int x = sc.nextInt();
-        hc.delHumanByNumber(x);
+        x = sc.nextInt();
+        return x;
     }
 
     @Override
-    public void showFindLInput() {
+    public String showFindLInput() {
+        String s;
         System.out.println("Please enter last name of human to find");
-        String s = sc.next();
-        hc.findByLastname(s);
+        s = sc.next();
+        return s;
     }
 
     @Override
-    public void showFindNInput() {
+    public String showFindNInput() {
+        String s;
         System.out.println("Please enter name of human to find");
-        String s = sc.next();
-        hc.findByName(s);
+        s = sc.next();
+        return s;
     }
 
 }

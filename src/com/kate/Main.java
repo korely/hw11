@@ -16,11 +16,11 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         HumanUI ui = new HumanConsoleUI();
         HumanService hs = new HumanConsoleService();
-        HumanController hc = new HumanController(ui, hs);
+        HumanController hc = new HumanController(ui, hs, sc);
 
         MenuItem[] menuItems = {
                 new ShowAddHumanMenuItem(hc),
-                new com.kate.menu.ShowHumansMenuItem(hc),
+                new ShowHumansMenuItem(hc),
                 new ShowDeleteHumanMenuItem(hc),
                 new ShowFindLNameHumanMenuItem(hc),
                 new ShowFindNameHumanMenuItem(hc),

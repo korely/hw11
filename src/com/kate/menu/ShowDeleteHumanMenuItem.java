@@ -8,6 +8,7 @@ public class ShowDeleteHumanMenuItem extends MenuItem {
 
     public ShowDeleteHumanMenuItem(HumanController hc) {
         super("Delete human");
+        this.hc = hc;
     }
 
     @Override

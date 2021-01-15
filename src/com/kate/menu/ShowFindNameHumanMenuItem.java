@@ -8,6 +8,7 @@ public class ShowFindNameHumanMenuItem extends MenuItem {
 
     public ShowFindNameHumanMenuItem(HumanController hc) {
         super("Find by name");
+        this.hc = hc;
     }
 
     @Override

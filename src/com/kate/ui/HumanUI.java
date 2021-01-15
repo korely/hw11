@@ -1,12 +1,15 @@
 package com.kate.ui;
 
+import com.kate.entities.Human;
+import java.util.Scanner;
+
 public interface HumanUI {
 
-    void readHuman();
+    Human readHuman(Scanner sc);
     void showHumansHead();
-    void showDeleteInput();
-    void showFindLInput();
-    void showFindNInput();
+    int showDeleteInput();
+    String showFindLInput();
+    String showFindNInput();
 
 }
 

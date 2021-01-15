@@ -6,13 +6,9 @@ import com.kate.utils.HumanList;
 public class HumanConsoleService implements HumanService {
 
     HumanList humans = new HumanList();
-    Human h = new Human();
 
-    public HumanConsoleService() {
-    }
-@Override
-    public void addMeHumans(String name, String lName, String patr) {
-        h = new Human(name, lName, patr);
+    @Override
+    public HumanList addMeHumans(Human h) {
         if (humans.size() == 0) {
             humans.add(h);
             System.out.println("The human [" + h + "] was added.");
@@ -22,15 +18,17 @@ public class HumanConsoleService implements HumanService {
             humans.add(h);
             System.out.println("The human [" + h + "] was added.");
         }
+        return humans;
     }
 
     @Override
-    public void showMeHumans() {
+    public HumanList showMeHumans() {
         humans.show();
+        return humans;
     }
 
     @Override
-    public void delHumanByNumber(int x) {
+    public HumanList delHumanByNumber(int x) {
         HumanList humansTemp = new HumanList();
 
         for (int i = 0; i < humans.size(); i++) {
@@ -54,10 +52,11 @@ public class HumanConsoleService implements HumanService {
             humans.add(humansTemp.get(m));
 
         }
+        return humans;
     }
 
     @Override
-    public void findByLastname(String s) {
+    public HumanList findByLastname(String s) {
         Human h;
         int found = 0;
 
@@ -72,11 +71,11 @@ public class HumanConsoleService implements HumanService {
         if (found == 0) {
             System.out.println("Nothing was found");
         }
-
+        return humans;
     }
 
     @Override
-    public void findByName(String s) {
+    public HumanList findByName(String s) {
         Human h;
         int found = 0;
 
@@ -91,6 +90,7 @@ public class HumanConsoleService implements HumanService {
         if (found == 0) {
             System.out.println("Nothing was found");
         }
+        return humans;
     }
 
 }

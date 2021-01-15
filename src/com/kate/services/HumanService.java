@@ -1,12 +1,15 @@
 package com.kate.services;
 
+import com.kate.entities.Human;
+import com.kate.utils.HumanList;
+
 public interface HumanService {
 
-    void addMeHumans(String name, String lName, String patr);
-    void showMeHumans();
-    void delHumanByNumber(int x);
-    void findByLastname(String s);
-    void findByName(String s);
+    HumanList addMeHumans(Human h);
+    HumanList showMeHumans();
+    HumanList delHumanByNumber(int x);
+    HumanList findByLastname(String s);
+    HumanList findByName(String s);
 
 }
 
