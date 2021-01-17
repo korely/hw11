@@ -1,22 +1,24 @@
 package com.kate.services;
 
 import com.kate.entities.Human;
+import com.kate.ui.HumanConsoleUI;
 import com.kate.utils.HumanList;
 
 public class HumanConsoleService implements HumanService {
 
     HumanList humans = new HumanList();
+    HumanConsoleUI ui = new HumanConsoleUI();
 
     @Override
     public HumanList addMeHumans(Human h) {
         if (humans.size() == 0) {
             humans.add(h);
-            System.out.println("The human [" + h + "] was added.");
+            ui.showAdded(h);
         } else if (h.equals(humans.get(humans.findTheSame(h)))) {
-            System.out.println("The human [" + h + "] is already exist");
+            ui.alreadyExist(h);
         } else {
             humans.add(h);
-            System.out.println("The human [" + h + "] was added.");
+            ui.showAdded(h);
         }
         return humans;
     }
@@ -33,7 +35,7 @@ public class HumanConsoleService implements HumanService {
 
         for (int i = 0; i < humans.size(); i++) {
             if (i == x - 1) {
-                System.out.println("The human [" + humans.get(x - 1) + "] was deleted");
+                ui.deleted(humans, x);
                 humans.set(x - 1, null);
             } else {
                 humans.set(i, humans.get(i));
@@ -63,13 +65,12 @@ public class HumanConsoleService implements HumanService {
         for (int i = 0; i < humans.size(); i++) {
             h = humans.get(i);
             if (h.getLastname().equals(s)) {
-                System.out.println("\nLastname [" + s + "] was found\n" +
-                        "Human: " + (i + 1) + ". " + humans.get(i));
+                ui.found(humans, s, i);
                 found++;
             }
         }
         if (found == 0) {
-            System.out.println("Nothing was found");
+            ui.notFound();
         }
         return humans;
     }
@@ -82,13 +83,12 @@ public class HumanConsoleService implements HumanService {
         for (int i = 0; i < humans.size(); i++) {
             h = humans.get(i);
             if (h.getName().equals(s)) {
-                System.out.println("\nName [" + s + "] was found\n" +
-                        "Human: " + (i + 1) + ". " + humans.get(i));
+                ui.found(humans, s, i);
                 found++;
             }
         }
         if (found == 0) {
-            System.out.println("Nothing was found");
+            ui.notFound();
         }
         return humans;
     }
