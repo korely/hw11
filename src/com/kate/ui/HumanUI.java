@@ -1,6 +1,7 @@
 package com.kate.ui;
 
 import com.kate.entities.Human;
+
 import java.util.Scanner;
 
 public interface HumanUI {
@@ -10,6 +11,15 @@ public interface HumanUI {
     int showDeleteInput();
     String showFindLInput();
     String showFindNInput();
+    void showAdded(Human h);
+    void notAdded(Human h);
+    void deleted (int x);
+    void notDel(int x);
+    void found(String s);
+    void foundN(String s);
+    void notFound();
+
+
 
 }
 

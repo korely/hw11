@@ -1,7 +1,6 @@
 package com.kate.ui;
 
 import com.kate.entities.Human;
-import com.kate.utils.HumanList;
 
 import java.util.Scanner;
 
@@ -60,18 +59,24 @@ public class HumanConsoleUI implements HumanUI {
     public void showAdded(Human h){
         System.out.println("The human [" + h + "] was added.");
     }
-
-    public void alreadyExist(Human h){
-        System.out.println("The human [" + h + "] is already exist");
+    public void notAdded(Human h){
+        System.out.println("The human [" + h + "] NOT added.\n" +
+                "Maybe this human is already exist");
     }
 
-    public void deleted (HumanList humans, int x){
-        System.out.println("The human [" + humans.get(x - 1) + "] was deleted");
+    public void deleted (int x){
+        System.out.println("The human [" + x + "] was deleted");
     }
 
-    public void found(HumanList humans, String s, int i){
-        System.out.println("\nLastname [" + s + "] was found\n" +
-                "Human: " + (i + 1) + ". " + humans.get(i));
+    public void notDel(int x){
+        System.out.println("The human [" + x + "] NOT deleted");
+    }
+
+    public void found(String s){
+        System.out.println("\nHuman with lastname [" + s + "] was found");
+    }
+    public void foundN(String s){
+        System.out.println("\nHuman with name [" + s + "] was found");
     }
 
     public void notFound(){

@@ -1,41 +1,40 @@
 package com.kate.services;
 
 import com.kate.entities.Human;
-import com.kate.ui.HumanConsoleUI;
 import com.kate.utils.HumanList;
 
 public class HumanConsoleService implements HumanService {
 
     HumanList humans = new HumanList();
-    HumanConsoleUI ui = new HumanConsoleUI();
 
     @Override
-    public HumanList addMeHumans(Human h) {
+    public boolean addMeHumans(Human h) {
+        boolean ifAdd;
         if (humans.size() == 0) {
             humans.add(h);
-            ui.showAdded(h);
+            ifAdd = true;
         } else if (h.equals(humans.get(humans.findTheSame(h)))) {
-            ui.alreadyExist(h);
+            ifAdd = false;
         } else {
             humans.add(h);
-            ui.showAdded(h);
+            ifAdd = true;
         }
-        return humans;
+        return ifAdd;
     }
 
     @Override
-    public HumanList showMeHumans() {
+    public void showMeHumans() {
         humans.show();
-        return humans;
     }
 
     @Override
-    public HumanList delHumanByNumber(int x) {
+    public boolean delHumanByNumber(int x) {
         HumanList humansTemp = new HumanList();
+        boolean ifDel = false;
 
         for (int i = 0; i < humans.size(); i++) {
             if (i == x - 1) {
-                ui.deleted(humans, x);
+                ifDel = true;
                 humans.set(x - 1, null);
             } else {
                 humans.set(i, humans.get(i));
@@ -54,43 +53,35 @@ public class HumanConsoleService implements HumanService {
             humans.add(humansTemp.get(m));
 
         }
-        return humans;
+        return ifDel;
     }
 
     @Override
-    public HumanList findByLastname(String s) {
+    public int findByLastname(String s) {
         Human h;
         int found = 0;
 
         for (int i = 0; i < humans.size(); i++) {
             h = humans.get(i);
             if (h.getLastname().equals(s)) {
-                ui.found(humans, s, i);
-                found++;
+                found = 1;
             }
         }
-        if (found == 0) {
-            ui.notFound();
-        }
-        return humans;
+        return found;
     }
 
     @Override
-    public HumanList findByName(String s) {
+    public int findByName(String s) {
         Human h;
         int found = 0;
 
         for (int i = 0; i < humans.size(); i++) {
             h = humans.get(i);
             if (h.getName().equals(s)) {
-                ui.found(humans, s, i);
-                found++;
+                found = 1;
             }
         }
-        if (found == 0) {
-            ui.notFound();
-        }
-        return humans;
+        return found;
     }
 
 }

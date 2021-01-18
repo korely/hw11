@@ -3,7 +3,6 @@ package com.kate;
 import com.kate.entities.Human;
 import com.kate.services.HumanService;
 import com.kate.ui.HumanUI;
-import com.kate.utils.HumanList;
 
 import java.util.Scanner;
 
@@ -12,7 +11,6 @@ public class HumanController {
     HumanUI ui;
     HumanService hs;
     Scanner sc;
-    HumanList humans;
 
     public HumanController(HumanUI ui, HumanService hs, Scanner sc) {
         this.ui = ui;
@@ -22,27 +20,40 @@ public class HumanController {
 
     public void addHuman() {
         Human h = ui.readHuman(sc);
-        hs.addMeHumans(h);
+        boolean ifAdd = hs.addMeHumans(h);
+        if (ifAdd){
+            ui.showAdded(h);
+        } else ui.notAdded(h);
+
     }
 
     public void showHumans() {
         ui.showHumansHead();
-        humans = hs.showMeHumans();
+        hs.showMeHumans();
     }
 
     public void deleteHuman() {
         int x = ui.showDeleteInput();
-        humans = hs.delHumanByNumber(x);
+        boolean ifDel = hs.delHumanByNumber(x);
+        if(ifDel){
+            ui.deleted(x);
+        } else ui.notDel(x);
     }
 
     public void findLastname() {
         String s = ui.showFindLInput();
-        humans = hs.findByLastname(s);
+        int found = hs.findByLastname(s);
+        if (found==0){
+            ui.notFound();
+        }else ui.found(s);
     }
 
     public void findName() {
         String s = ui.showFindNInput();
-        humans = hs.findByName(s);
+        int found = hs.findByName(s);
+        if (found==0){
+            ui.notFound();
+        }else ui.foundN(s);
     }
 
 }
